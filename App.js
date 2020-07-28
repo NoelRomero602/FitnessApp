@@ -3,16 +3,37 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import Clock from './components/clock';
 import RepCounter from './components/RepCounter';
-export default function App() {
-  let isRestarted = false;
+export default class  App extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.ClockElement= React.createRef();
+    this.state = {
+      isRestarted:false,
+      key:0
+    };
+}
+handlePress= () => {
+// stuff happends here
+ this.ClockElement.current. resetFunction();
+};
+
+pause= () =>{
+  this.ClockElement.current.puaseFunction();
+}
+
+      render(){
   return (
     <View style={styles.container}>
+        <Button title="Restart" onPress={this.handlePress}/>
+        <Button title="Pause/Play" onPress={this.pause} />
+ 
      <RepCounter/>
-      <Clock data={isRestarted}/>
+      <Clock ref={this.ClockElement} data={this.state.key }/>
       <StatusBar style="auto" />
-      <Button title="Restart" onPress={() => {isRestarted = true;}}/>
-    </View>
+       </View>
   );
+      }
 } 
    
 const styles = StyleSheet.create({

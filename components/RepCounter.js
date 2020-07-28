@@ -24,7 +24,7 @@ class RepCounter extends Component {
         <Text>Rep#: {count}</Text>
                 </View>
                 <TouchableOpacity style={styles.button}
-          onPress={this.onPress}>click here</TouchableOpacity>
+          onPress={this.onPress}><Text>click here</Text></TouchableOpacity>
             </View>
         )
 
